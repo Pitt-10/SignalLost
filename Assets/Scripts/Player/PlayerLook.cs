@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Transform cameraTransform;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private GameInput gameInput;
+
+    private void Awake() {
+        gameInput = GetComponent<GameInput>();
     }
 }
