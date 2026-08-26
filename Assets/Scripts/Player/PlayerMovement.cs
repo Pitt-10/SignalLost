@@ -8,23 +8,19 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
 
-    private PlayerInputActions inputActions;
-    private Vector2 moveInput;
-
+    private GameInput gameInput;
     private Rigidbody rb;
 
     private void Awake() {
-        inputActions = new PlayerInputActions();
         rb = GetComponent<Rigidbody>();
-    }
-    private void OnEnable() {
-        inputActions.Player.Enable();
-    }
-    private void OnDisable() {
-        inputActions.Player.Disable();
+        gameInput = GetComponent<GameInput>();
     }
 
-    private void Update() {
-        moveInput = inputActions.Player.Move.ReadValue<Vector2>();
+    private void FixedUpdate() {
+        Vector2 inputVector = gameInput.GetMovementVector();
+
+        Vector3 moveDirection = new Vector3(inputVector.x, 0f, inputVector.y);
+
+        rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
     }
 }
