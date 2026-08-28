@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerLook : MonoBehaviour
 {
     [SerializeField] private Transform cameraTransform;
-    [SerializeField] private float lookSensitivity = 0.2f;
+    [SerializeField] private float lookSensitivity = 1f;
 
     private float cameraPitch;
 
@@ -13,6 +13,9 @@ public class PlayerLook : MonoBehaviour
 
     private void Awake() {
         gameInput = GetComponent<GameInput>();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update() {
@@ -24,6 +27,7 @@ public class PlayerLook : MonoBehaviour
         transform.Rotate(Vector3.up, yaw);
 
         cameraPitch -= pitch;
+        cameraPitch = Mathf.Clamp(cameraPitch, -90f, 90f);
 
         cameraTransform.localRotation = Quaternion.Euler(cameraPitch, 0f, 0f);
 

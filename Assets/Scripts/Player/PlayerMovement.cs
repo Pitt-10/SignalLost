@@ -19,7 +19,9 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate() {
         Vector2 inputVector = gameInput.GetMovementVector();
 
-        Vector3 moveDirection = new Vector3(inputVector.x, 0f, inputVector.y);
+        Vector3 moveDirection =
+        transform.right * inputVector.x +
+        transform.forward * inputVector.y;
 
         rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
     }
