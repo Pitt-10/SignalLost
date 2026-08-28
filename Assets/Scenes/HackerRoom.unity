@@ -344,6 +344,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 1628339808}
+  interactLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1028335987
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +607,8 @@ GameObject:
   - component: {fileID: 1180491338}
   - component: {fileID: 1180491337}
   - component: {fileID: 1180491336}
-  m_Layer: 0
+  - component: {fileID: 1180491340}
+  m_Layer: 6
   m_Name: Computadora
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -697,6 +701,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1180491340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180491335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf3c16cfd18c5b47893b6780c945383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1577701093
 GameObject:
   m_ObjectHideFlags: 0
