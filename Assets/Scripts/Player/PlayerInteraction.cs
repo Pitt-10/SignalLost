@@ -12,7 +12,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private float interactionDistance = 2f;
 
-    public event EventHandler OnInteract;
+    public event EventHandler<InteractEventArgs> OnInteract;
 
     private void Awake() {
         gameInput = GetComponent<GameInput>();  
@@ -20,11 +20,10 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Update() {
         if (gameInput.GetInteractPressed()) {
-            Debug.Log("Tecla E presionada");
-        }
-        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit raycastHit, interactionDistance, interactLayerMask)) {
-            if (raycastHit.transform.TryGetComponent<IInteractable>(out IInteractable interactable)) {
-                interactable.Interact();
+            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit raycastHit, interactionDistance, interactLayerMask)) {
+                if (raycastHit.transform.TryGetComponent<IInteractable>(out IInteractable interactable)) { 
+                    OnInteract?.Invoke(this, new InteractEventArgs(interactable));
+                }
             }
         }
     }
