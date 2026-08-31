@@ -6,6 +6,7 @@ public class Computer : MonoBehaviour, IInteractable {
 
     [SerializeField] private PlayerInteraction playerInteraction;
     [SerializeField] private GameInput gameInput;
+    [SerializeField] private GameObject computerUI;
 
     private bool isUsing;
 
@@ -19,6 +20,16 @@ public class Computer : MonoBehaviour, IInteractable {
         }
     }
 
+    private void EnterComputerMode() { 
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    private void ExitComputerMode() {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     public void Interact() {
         if (isUsing)
             return;
@@ -26,6 +37,10 @@ public class Computer : MonoBehaviour, IInteractable {
         isUsing = true;
 
         gameInput.DisableMovement();
+
+        computerUI.SetActive(true);
+
+        EnterComputerMode();
 
         Debug.Log("Entrando a la computadora");
     }
@@ -37,6 +52,10 @@ public class Computer : MonoBehaviour, IInteractable {
         isUsing = false;
 
         gameInput.EnableMovement();
+
+        computerUI.SetActive(false);
+
+        ExitComputerMode();
 
         Debug.Log("Saliendo de la computadora");
     }
