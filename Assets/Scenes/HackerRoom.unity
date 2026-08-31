@@ -714,6 +714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInteraction: {fileID: 463275742}
+  gameInput: {fileID: 463275740}
 --- !u!1 &1577701093
 GameObject:
   m_ObjectHideFlags: 0

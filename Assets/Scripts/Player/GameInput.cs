@@ -8,12 +8,15 @@ public class GameInput : MonoBehaviour
  
     private void Awake() {
         inputActions = new PlayerInputActions();
-    }
-    private void OnEnable() {
         inputActions.Player.Enable();
     }
-    private void OnDisable() {
-        inputActions.Player.Disable();
+    public void EnableMovement() {
+        inputActions.Player.Move.Enable();
+        inputActions.Player.Look.Enable();
+    }
+    public void DisableMovement() {
+        inputActions.Player.Move.Disable();
+        inputActions.Player.Look.Disable();
     }
 
     public Vector2 GetMovementVector(){
@@ -26,5 +29,9 @@ public class GameInput : MonoBehaviour
 
     public bool GetInteractPressed() {
         return inputActions.Player.Interact.WasPressedThisFrame();
+    }
+
+    public bool GetExitComputerPressed() { 
+        return inputActions.Player.ExitComputer.WasPressedThisFrame();
     }
 }
