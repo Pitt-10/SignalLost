@@ -6,7 +6,7 @@ public class Computer : MonoBehaviour, IInteractable {
 
     [SerializeField] private PlayerInteraction playerInteraction;
     [SerializeField] private GameInput gameInput;
-    [SerializeField] private GameObject computerUI;
+    [SerializeField] private ComputerUI computerUI;
 
     private bool isUsing;
 
@@ -38,7 +38,7 @@ public class Computer : MonoBehaviour, IInteractable {
 
         gameInput.DisableMovement();
 
-        computerUI.SetActive(true);
+        computerUI.Show();
 
         EnterComputerMode();
 
@@ -53,7 +53,7 @@ public class Computer : MonoBehaviour, IInteractable {
 
         gameInput.EnableMovement();
 
-        computerUI.SetActive(false);
+        computerUI.Hide();
 
         ExitComputerMode();
 
