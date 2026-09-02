@@ -5,6 +5,9 @@ using UnityEngine;
 public class ComputerUI : MonoBehaviour
 {
 
+    [SerializeField] private GameObject content;
+    [SerializeField] private GameObject hackerMinigame;
+
     public void Show() { 
         gameObject.SetActive(true);
     }
@@ -13,7 +16,8 @@ public class ComputerUI : MonoBehaviour
     }
 
     public void AccessComputer() {
-        Debug.Log("Accediendo a la computadora");
+        content.SetActive(false);
+        hackerMinigame.SetActive(true);
         
     }
 }

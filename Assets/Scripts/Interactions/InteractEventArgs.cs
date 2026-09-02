@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class InteractEventArgs : EventArgs
 {
+
    public IInteractable interactable;
 
     public InteractEventArgs (IInteractable interactable) {
