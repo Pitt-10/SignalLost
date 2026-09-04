@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class HackerMinigame : MonoBehaviour
-{
+public class HackerMinigame : MonoBehaviour {
     [SerializeField] private string text;
     [SerializeField] private TMP_Text textDisplay;
     [SerializeField] private TMP_InputField codeInput;
+    [SerializeField] private ComputerUI computerUI;
+
+    private int failedAttempts;
 
     private void Start() {
         textDisplay.text = text;
@@ -25,25 +27,32 @@ public class HackerMinigame : MonoBehaviour
         string code = "";
 
         foreach (char character in text) {
-            if (char.IsUpper(character) || char.IsDigit(character)) { 
+            if (char.IsUpper(character) || char.IsDigit(character)) {
                 code += character;
             }
         }
         return code;
     }
 
-    private string GetPlayerCode() { 
+    private string GetPlayerCode() {
         return codeInput.text;
     }
 
-    public void ConfirmCode() { 
+    public void ConfirmCode() {
         string correctCode = GetCode();
         string playerCode = GetPlayerCode();
 
         if (playerCode == correctCode) {
             Debug.Log("Correcto");
+            computerUI.ShowSuccessPanel();
         } else {
             Debug.Log("Incorrecto");
+
+            failedAttempts++;
+
+            if (failedAttempts > 3) {
+                computerUI.ShowFailedPanel();
+            }
         }
     }
 }
