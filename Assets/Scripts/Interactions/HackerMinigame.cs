@@ -50,9 +50,14 @@ public class HackerMinigame : MonoBehaviour {
 
             failedAttempts++;
 
-            if (failedAttempts > 3) {
+            if (failedAttempts > 2) {
                 computerUI.ShowFailedPanel();
             }
         }
+    }
+
+    public void ResetMinigame() {
+        failedAttempts = 0;
+        codeInput.text = "";
     }
 }

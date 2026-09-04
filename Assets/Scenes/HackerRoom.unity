@@ -729,7 +729,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &379389847
 RectTransform:
   m_ObjectHideFlags: 0
@@ -808,7 +808,8 @@ MonoBehaviour:
   content: {fileID: 1941289057}
   hackerMinigame: {fileID: 2043163008}
   successPanel: {fileID: 93653609}
-  failedPanel: {fileID: 0}
+  failedPanel: {fileID: 570827414}
+  hackerMinigameScript: {fileID: 2043163012}
 --- !u!1 &393554668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,8 +1618,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 379389850}
-        m_TargetAssemblyTypeName: ComputerUI, Assembly-CSharp
+      - m_Target: {fileID: 1180491340}
+        m_TargetAssemblyTypeName: Computer, Assembly-CSharp
         m_MethodName: ExitComputer
         m_Mode: 1
         m_Arguments:
@@ -2331,8 +2332,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 379389850}
-        m_TargetAssemblyTypeName: ComputerUI, Assembly-CSharp
+      - m_Target: {fileID: 1180491340}
+        m_TargetAssemblyTypeName: Computer, Assembly-CSharp
         m_MethodName: ExitComputer
         m_Mode: 1
         m_Arguments:
