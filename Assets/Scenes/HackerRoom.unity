@@ -652,7 +652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &379389847
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2100,7 +2100,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1769861039}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2043163012}
+        m_TargetAssemblyTypeName: HackerMinigame, Assembly-CSharp
+        m_MethodName: ConfirmCode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1769861039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2651,7 +2663,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1941289058
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3063,7 +3075,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2043163009
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3138,6 +3150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: the station was quiet when we entered the R7oom and the m4in computer
   textDisplay: {fileID: 573078143}
+  codeInput: {fileID: 1798309477}
 --- !u!1 &2122815892
 GameObject:
   m_ObjectHideFlags: 0
