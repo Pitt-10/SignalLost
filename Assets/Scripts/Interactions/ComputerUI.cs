@@ -10,6 +10,7 @@ public class ComputerUI : MonoBehaviour
     [SerializeField] private GameObject successPanel;
     [SerializeField] private GameObject failedPanel;
     [SerializeField] private HackerMinigame hackerMinigameScript;
+    [SerializeField] private Computer computer;
 
     public void Show() { 
         gameObject.SetActive(true);
@@ -22,7 +23,7 @@ public class ComputerUI : MonoBehaviour
         content.SetActive(false);
         hackerMinigame.SetActive(true);
         successPanel.SetActive(false);
-        hackerMinigame.SetActive(true);
+        failedPanel.SetActive(false);
     }
 
     public void ShowSuccessPanel() {
@@ -35,6 +36,14 @@ public class ComputerUI : MonoBehaviour
         failedPanel.SetActive(true);
     }
 
+    public void HackerSuccess() { 
+        ShowSuccessPanel();
+    }
+
+    private void HackerFailed() { 
+        ShowFailedPanel();
+    }
+
      public void ReturnToContent() {
         failedPanel.SetActive(false);
         content.SetActive(true);
@@ -42,5 +51,8 @@ public class ComputerUI : MonoBehaviour
         hackerMinigameScript.ResetMinigame();
     }
 
+    public void ExitComputer() {
+        computer.ExitComputer();
+    }
 
 }

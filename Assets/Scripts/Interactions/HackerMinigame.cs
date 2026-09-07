@@ -8,8 +8,13 @@ public class HackerMinigame : MonoBehaviour {
     [SerializeField] private TMP_Text textDisplay;
     [SerializeField] private TMP_InputField codeInput;
     [SerializeField] private ComputerUI computerUI;
+    [SerializeField] private TMP_Text attemptsText;
 
-    private int failedAttempts;
+    private int attempts;
+    private const int maxAttemtps = 3;
+
+    public event System.Action OnSuccess;
+    public event System.Action OnFailed;
 
     private void Start() {
         textDisplay.text = text;
@@ -43,21 +48,20 @@ public class HackerMinigame : MonoBehaviour {
         string playerCode = GetPlayerCode();
 
         if (playerCode == correctCode) {
-            Debug.Log("Correcto");
-            computerUI.ShowSuccessPanel();
+            OnSuccess?.Invoke();
         } else {
             Debug.Log("Incorrecto");
 
-            failedAttempts++;
+            attempts++;
 
-            if (failedAttempts > 2) {
-                computerUI.ShowFailedPanel();
+            if (attempts > 2) {
+                OnFailed?.Invoke();
             }
         }
     }
 
     public void ResetMinigame() {
-        failedAttempts = 0;
+        attempts = 0;
         codeInput.text = "";
     }
 }
