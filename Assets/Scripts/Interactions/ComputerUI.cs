@@ -12,6 +12,16 @@ public class ComputerUI : MonoBehaviour
     [SerializeField] private HackerMinigame hackerMinigameScript;
     [SerializeField] private Computer computer;
 
+    private void OnEnable() {
+        hackerMinigameScript.OnSuccess += HackerSuccess;
+        hackerMinigameScript.OnFailed += HackerFailed;
+    }
+
+    private void OnDisable() {
+        hackerMinigameScript.OnSuccess -= HackerSuccess;
+        hackerMinigameScript.OnFailed -= HackerFailed;
+    }
+
     public void Show() { 
         gameObject.SetActive(true);
     }

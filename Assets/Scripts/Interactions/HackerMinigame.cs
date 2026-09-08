@@ -4,11 +4,13 @@ using UnityEngine;
 using TMPro;
 
 public class HackerMinigame : MonoBehaviour {
-    [SerializeField] private string text;
+    [SerializeField] private string[] texts;
+    private string currentText;
     [SerializeField] private TMP_Text textDisplay;
     [SerializeField] private TMP_InputField codeInput;
     [SerializeField] private ComputerUI computerUI;
     [SerializeField] private TMP_Text attemptsText;
+    [SerializeField] private TMP_Text errorText;
 
     private int attempts;
     private const int maxAttemtps = 3;
@@ -17,7 +19,9 @@ public class HackerMinigame : MonoBehaviour {
     public event System.Action OnFailed;
 
     private void Start() {
-        textDisplay.text = text;
+        currentText = texts[Random.Range(0, texts.Length)];
+
+        textDisplay.text = currentText;
 
         codeInput.onValueChanged.AddListener((inputText) => {
             codeInput.text = inputText.ToUpper();
@@ -26,6 +30,10 @@ public class HackerMinigame : MonoBehaviour {
         string code = GetCode();
 
         Debug.Log(code);
+
+        UpdateAttemptsText();
+
+        codeInput.onValueChanged.AddListener(OnCodeInputChanged);
     }
 
     private string GetCode() {
@@ -48,14 +56,22 @@ public class HackerMinigame : MonoBehaviour {
         string playerCode = GetPlayerCode();
 
         if (playerCode == correctCode) {
+            errorText.gameObject.SetActive(false);
             OnSuccess?.Invoke();
         } else {
-            Debug.Log("Incorrecto");
 
             attempts++;
 
-            if (attempts > 2) {
+            UpdateAttemptsText();
+
+            if (attempts >= maxAttemtps) {
+
+                errorText.gameObject.SetActive(false);
+
                 OnFailed?.Invoke();
+            } else {
+                codeInput.text = "";
+                errorText.gameObject.SetActive(true);
             }
         }
     }
@@ -63,5 +79,17 @@ public class HackerMinigame : MonoBehaviour {
     public void ResetMinigame() {
         attempts = 0;
         codeInput.text = "";
+
+        errorText.gameObject.SetActive(false);
+
+        UpdateAttemptsText();
+    }
+
+    private void UpdateAttemptsText() {
+        attemptsText.text = "Intentos: " + attempts + "/" + maxAttemtps;
+    }
+
+    private void OnCodeInputChanged(string value) {
+        errorText.gameObject.SetActive(false);
     }
 }
