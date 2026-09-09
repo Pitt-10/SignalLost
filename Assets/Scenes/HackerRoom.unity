@@ -2284,7 +2284,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 47, y: -428}
+  m_AnchoredPosition: {x: 47, y: -456}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1421793044
@@ -2307,7 +2307,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: AtemptsText
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3118,6 +3118,140 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732360707}
   m_CullTransparentMesh: 1
+--- !u!1 &1755869522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1755869523}
+  - component: {fileID: 1755869525}
+  - component: {fileID: 1755869524}
+  m_Layer: 5
+  m_Name: ProgressText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1755869523
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755869522}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2043163009}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 373.26, y: -456}
+  m_SizeDelta: {x: 218.2947, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1755869524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755869522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: ProgressText
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1755869525
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755869522}
+  m_CullTransparentMesh: 1
 --- !u!1 &1769861036
 GameObject:
   m_ObjectHideFlags: 0
@@ -3154,7 +3288,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 47, y: -330}
+  m_AnchoredPosition: {x: 47, y: -367}
   m_SizeDelta: {x: 364.11, y: 78.5494}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1769861038
@@ -3287,7 +3421,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 47, y: -164}
+  m_AnchoredPosition: {x: 47.004, y: -252}
   m_SizeDelta: {x: 434.2177, y: 110.5611}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1798309477
@@ -3460,7 +3594,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 42, y: -69}
+  m_AnchoredPosition: {x: 47, y: -154}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1836789637
@@ -4327,6 +4461,7 @@ RectTransform:
   - {fileID: 1769861037}
   - {fileID: 1421793043}
   - {fileID: 1836789636}
+  - {fileID: 1755869523}
   m_Father: {fileID: 379389847}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4384,12 +4519,95 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9888b5527e722004995ebd0f52d8117c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: the station was quiet when we entered the R7oom and the m4in computer
+  texts:
+  - "durante la revisi\xF3n nocturna del sistema el\xE9ctrico se detectaron varias
+    fluctuaciones menores en los conductos del sector inferior. el informe inicial
+    se\xF1al\xF3 que la unidad M hab\xEDa respondido con retraso, aunque el problema
+    parec\xEDa haberse estabilizado. minutos despu\xE9s, el registro marc\xF3 una
+    anomal\xEDa en el canal 4, seguida por una p\xE9rdida breve de comunicaci\xF3n
+    cerca del laboratorio. un t\xE9cnico dej\xF3 anotado que la v\xE1lvula R deb\xEDa
+    revisarse antes del siguiente ciclo. m\xE1s tarde, otro sensor registr\xF3 actividad
+    irregular en el nivel 7, y el sistema termin\xF3 enviando una advertencia relacionada
+    con el m\xF3dulo K y la l\xEDnea 2."
+  - "el centro de comunicaciones recibi\xF3 varios paquetes incompletos durante la
+    madrugada, pero la mayor\xEDa fueron descartados autom\xE1ticamente por el sistema.
+    uno de los registros mencionaba el nodo B como posible origen de la interferencia.
+    poco despu\xE9s apareci\xF3 una lectura inusual en el puerto 9, aunque no se
+    encontraron da\xF1os visibles. el diagn\xF3stico continu\xF3 hasta detectar que
+    la terminal R estaba enviando respuestas fuera de tiempo. despu\xE9s de reiniciar
+    parte de la red, el monitor mostr\xF3 un aviso en el sector 3 y finalmente se\xF1al\xF3
+    que la ruta T hab\xEDa sido desviada hacia el canal 6."
+  - "los sensores ambientales comenzaron a mostrar valores inestables poco despu\xE9s
+    del cambio de turno. el primer aviso proven\xEDa del corredor F, donde la presi\xF3n
+    hab\xEDa descendido ligeramente. mientras el personal revisaba esa zona, el sistema
+    detect\xF3 una variaci\xF3n de temperatura en el compartimiento 8. varios minutos
+    despu\xE9s se registr\xF3 una lectura err\xE1tica asociada a la compuerta Q.
+    el problema parec\xEDa aislado, pero una nueva alerta apareci\xF3 en el nivel
+    5. finalmente, el software marc\xF3 el conducto C como posible punto de origen
+    y recomend\xF3 revisar la secci\xF3n 1."
+  - "el registro de mantenimiento indica que la estaci\xF3n permaneci\xF3 estable
+    durante casi toda la jornada, salvo por algunas desconexiones breves en la red
+    secundaria. la primera incidencia qued\xF3 asociada al terminal A. poco despu\xE9s
+    se detect\xF3 una p\xE9rdida de se\xF1al en el enlace 6. el sistema intent\xF3
+    restaurar la conexi\xF3n de manera autom\xE1tica, pero una advertencia adicional
+    apareci\xF3 cerca del m\xF3dulo L. tras varios intentos, el diagn\xF3stico se\xF1al\xF3
+    una falla intermitente en el puerto 4. antes de finalizar la revisi\xF3n, tambi\xE9n
+    se registr\xF3 actividad inesperada en la unidad P y una lectura anormal en el
+    sensor 9."
+  - "durante la prueba de los generadores auxiliares se produjo una ca\xEDda de tensi\xF3n
+    que afect\xF3 a varias zonas de la estaci\xF3n. el primer componente en responder
+    de forma irregular fue el rel\xE9 D. el sistema compens\xF3 la p\xE9rdida durante
+    unos segundos, pero luego apareci\xF3 una advertencia en la l\xEDnea 3. mientras
+    los t\xE9cnicos analizaban los datos, se descubri\xF3 que la consola N hab\xEDa
+    perdido sincronizaci\xF3n con el resto de la red. poco despu\xE9s surgi\xF3 otro
+    error relacionado con el circuito 8. el informe final tambi\xE9n mencionaba la
+    unidad H y una lectura inestable en el canal 2."
+  - "el archivo central inici\xF3 una comprobaci\xF3n autom\xE1tica despu\xE9s de
+    encontrar diferencias entre varias copias de seguridad. el primer directorio
+    afectado estaba identificado con la letra G. durante el an\xE1lisis apareci\xF3
+    un error de lectura en el bloque 5. aunque la mayor\xEDa de los archivos pudieron
+    recuperarse, el sistema detect\xF3 otra inconsistencia asociada al volumen V.
+    varias horas despu\xE9s se registr\xF3 una modificaci\xF3n inesperada en el segmento
+    2. el programa de recuperaci\xF3n termin\xF3 se\xF1alando la carpeta J y recomend\xF3
+    revisar tambi\xE9n el registro 7."
+  - "una serie de advertencias comenz\xF3 a aparecer en la consola de ingenier\xEDa
+    despu\xE9s de que varios sensores dejaran de enviar informaci\xF3n al mismo tiempo.
+    el primer mensaje hac\xEDa referencia al m\xF3dulo E. unos segundos despu\xE9s
+    apareci\xF3 una lectura cr\xEDtica en el conducto 4. el sistema desactiv\xF3
+    algunos componentes secundarios y comenz\xF3 un an\xE1lisis completo. durante
+    ese proceso se detect\xF3 una se\xF1al irregular proveniente del panel W, seguida
+    por una anomal\xEDa en la conexi\xF3n 9. antes de terminar, el diagn\xF3stico
+    tambi\xE9n marc\xF3 la secci\xF3n S y el circuito 6."
+  - "el sistema de seguridad registr\xF3 varios intentos de acceso desde terminales
+    que normalmente permanecen inactivas. la primera conexi\xF3n sospechosa proven\xEDa
+    de la estaci\xF3n H. el intento fue rechazado, pero poco despu\xE9s apareci\xF3
+    otra solicitud desde el puerto 7. el programa bloque\xF3 temporalmente esa zona
+    y comenz\xF3 a rastrear la actividad. durante el an\xE1lisis encontr\xF3 una
+    segunda ruta vinculada al nodo P, seguida por una conexi\xF3n inesperada al canal
+    3. antes de cerrar el informe, el sistema tambi\xE9n identific\xF3 la terminal
+    X y el registro 5."
+  - "los controles de navegaci\xF3n mostraron peque\xF1as desviaciones durante una
+    prueba rutinaria de los sistemas internos. en un principio se crey\xF3 que se
+    trataba de un problema de calibraci\xF3n, pero el registro termin\xF3 se\xF1alando
+    el sensor C. poco despu\xE9s apareci\xF3 un valor anormal en la referencia 8.
+    el equipo continu\xF3 funcionando, aunque m\xE1s tarde se detect\xF3 una p\xE9rdida
+    breve de comunicaci\xF3n con la baliza M. despu\xE9s de reiniciar el sistema
+    surgi\xF3 otra advertencia en el canal 2. finalmente, el monitor destac\xF3 la
+    unidad R y una coordenada asociada al n\xFAmero 6."
+  - "el sistema de refrigeraci\xF3n comenz\xF3 a realizar ajustes autom\xE1ticos
+    despu\xE9s de detectar un aumento progresivo de temperatura en varias salas.
+    el primer aviso estaba relacionado con la v\xE1lvula K. unos minutos m\xE1s tarde
+    apareci\xF3 una lectura anormal en el sensor 1. el flujo fue redirigido hacia
+    otro conducto, pero la consola indic\xF3 que el m\xF3dulo F segu\xEDa funcionando
+    fuera de los valores esperados. posteriormente se registr\xF3 una variaci\xF3n
+    en la l\xEDnea 7. antes de finalizar el ciclo, tambi\xE9n se se\xF1al\xF3 la
+    bomba Q y un posible fallo en el circuito 4."
   textDisplay: {fileID: 573078143}
   codeInput: {fileID: 1798309477}
   computerUI: {fileID: 379389850}
   attemptsText: {fileID: 1421793044}
   errorText: {fileID: 1836789637}
+  progressText: {fileID: 1755869524}
 --- !u!1 &2122815892
 GameObject:
   m_ObjectHideFlags: 0

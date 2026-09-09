@@ -11,17 +11,23 @@ public class HackerMinigame : MonoBehaviour {
     [SerializeField] private ComputerUI computerUI;
     [SerializeField] private TMP_Text attemptsText;
     [SerializeField] private TMP_Text errorText;
+    [SerializeField] private TMP_Text progressText;
+
+    private int completedTexts;
+    private const int maxTexts = 3;
 
     private int attempts;
     private const int maxAttemtps = 3;
+
+    private List<int> usedTextIndexes = new List<int>();
 
     public event System.Action OnSuccess;
     public event System.Action OnFailed;
 
     private void Start() {
-        currentText = texts[Random.Range(0, texts.Length)];
+        LoadRandomText();
 
-        textDisplay.text = currentText;
+        errorText.gameObject.SetActive(false);
 
         codeInput.onValueChanged.AddListener((inputText) => {
             codeInput.text = inputText.ToUpper();
@@ -32,14 +38,27 @@ public class HackerMinigame : MonoBehaviour {
         Debug.Log(code);
 
         UpdateAttemptsText();
+        UpdateProgressText();
 
         codeInput.onValueChanged.AddListener(OnCodeInputChanged);
+
+    }
+
+    private void LoadRandomText() {
+        int randomIndex;
+
+        do {
+            randomIndex = Random.Range(0, texts.Length);
+        } while (usedTextIndexes.Contains(randomIndex));
+
+        currentText = texts[randomIndex];
+        textDisplay.text = currentText;
     }
 
     private string GetCode() {
         string code = "";
 
-        foreach (char character in text) {
+        foreach (char character in currentText) {
             if (char.IsUpper(character) || char.IsDigit(character)) {
                 code += character;
             }
@@ -56,10 +75,20 @@ public class HackerMinigame : MonoBehaviour {
         string playerCode = GetPlayerCode();
 
         if (playerCode == correctCode) {
-            errorText.gameObject.SetActive(false);
-            OnSuccess?.Invoke();
-        } else {
+            completedTexts++;
 
+            UpdateProgressText();
+
+            codeInput.text = "";
+            errorText.gameObject.SetActive(false);
+
+            if (completedTexts >= maxTexts) {
+                OnSuccess?.Invoke();
+            } else { 
+                LoadRandomText();
+            }
+
+        } else {
             attempts++;
 
             UpdateAttemptsText();
@@ -78,15 +107,25 @@ public class HackerMinigame : MonoBehaviour {
 
     public void ResetMinigame() {
         attempts = 0;
+        completedTexts = 0;
+        
+        usedTextIndexes.Clear();
+
         codeInput.text = "";
 
         errorText.gameObject.SetActive(false);
 
         UpdateAttemptsText();
+        UpdateProgressText();
+        LoadRandomText();
     }
 
     private void UpdateAttemptsText() {
         attemptsText.text = "Intentos: " + attempts + "/" + maxAttemtps;
+    }
+
+    private void UpdateProgressText() { 
+        progressText.text = "Progreso " + completedTexts + "/" + maxTexts;
     }
 
     private void OnCodeInputChanged(string value) {
