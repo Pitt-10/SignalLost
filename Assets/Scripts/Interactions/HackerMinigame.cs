@@ -12,6 +12,7 @@ public class HackerMinigame : MonoBehaviour {
     [SerializeField] private TMP_Text attemptsText;
     [SerializeField] private TMP_Text errorText;
     [SerializeField] private TMP_Text progressText;
+    [SerializeField] private GameInput gameInput;
 
     private int completedTexts;
     private const int maxTexts = 3;
@@ -44,12 +45,20 @@ public class HackerMinigame : MonoBehaviour {
 
     }
 
+    private void Update() {
+        if (gameInput.GetConfirmPressed()) { 
+            ConfirmCode();
+        }
+    }
+
     private void LoadRandomText() {
         int randomIndex;
 
         do {
             randomIndex = Random.Range(0, texts.Length);
         } while (usedTextIndexes.Contains(randomIndex));
+
+        usedTextIndexes.Add(randomIndex);
 
         currentText = texts[randomIndex];
         textDisplay.text = currentText;

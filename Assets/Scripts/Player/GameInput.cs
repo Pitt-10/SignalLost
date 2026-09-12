@@ -34,4 +34,8 @@ public class GameInput : MonoBehaviour
     public bool GetExitComputerPressed() { 
         return inputActions.Player.ExitComputer.WasPressedThisFrame();
     }
+
+    public bool GetConfirmPressed() {
+        return inputActions.Player.Confirm.WasPressedThisFrame();
+    }
 }

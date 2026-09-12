@@ -9,6 +9,7 @@ public class Computer : MonoBehaviour, IInteractable {
     [SerializeField] private ComputerUI computerUI;
 
     private bool isUsing;
+    private bool isCompleted;
 
     private void Awake() {
         playerInteraction.OnInteract += PlayerInteraction_OnInteract;
@@ -43,6 +44,14 @@ public class Computer : MonoBehaviour, IInteractable {
         EnterComputerMode();
 
         Debug.Log("Entrando a la computadora");
+    }
+
+    public void CompleteComputer() {
+        isCompleted = true;
+    }
+
+    public bool IsCompleted() { 
+        return isCompleted;
     }
 
     public void ExitComputer() { 

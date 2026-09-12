@@ -4608,6 +4608,7 @@ MonoBehaviour:
   attemptsText: {fileID: 1421793044}
   errorText: {fileID: 1836789637}
   progressText: {fileID: 1755869524}
+  gameInput: {fileID: 463275740}
 --- !u!1 &2122815892
 GameObject:
   m_ObjectHideFlags: 0

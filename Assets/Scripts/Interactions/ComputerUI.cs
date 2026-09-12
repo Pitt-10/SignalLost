@@ -24,9 +24,22 @@ public class ComputerUI : MonoBehaviour
 
     public void Show() { 
         gameObject.SetActive(true);
+
+        if (computer.IsCompleted()) {
+            ShowSuccessPanel();
+        } else {
+            ShowContent();
+        }
     }
     public void Hide() {
         gameObject.SetActive(false);
+    }
+
+    public void ShowContent() {
+        content.SetActive(true);
+        hackerMinigame.SetActive(false);
+        successPanel.SetActive(false);
+        failedPanel.SetActive(false);
     }
 
     public void AccessComputer() {
@@ -37,16 +50,21 @@ public class ComputerUI : MonoBehaviour
     }
 
     public void ShowSuccessPanel() {
+        content.SetActive(false);
         hackerMinigame.SetActive(false);
         successPanel.SetActive(true);
+        failedPanel.SetActive(false);
     }
 
     public void ShowFailedPanel() {
+        content.SetActive(false);
         hackerMinigame.SetActive(false);
         failedPanel.SetActive(true);
+        successPanel.SetActive(false);
     }
 
     public void HackerSuccess() { 
+        computer.CompleteComputer();
         ShowSuccessPanel();
     }
 
