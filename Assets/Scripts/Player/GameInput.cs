@@ -38,4 +38,8 @@ public class GameInput : MonoBehaviour
     public bool GetConfirmPressed() {
         return inputActions.Player.Confirm.WasPressedThisFrame();
     }
+
+    public bool GetJumpPressed() { 
+        return inputActions.Player.Jump.WasPressedThisFrame();
+    }
 }
