@@ -42,4 +42,8 @@ public class GameInput : MonoBehaviour
     public bool GetJumpPressed() { 
         return inputActions.Player.Jump.WasPressedThisFrame();
     }
+
+    public bool GetCrouchPressed() {
+        return inputActions.Player.Crouch.IsPressed();
+    }
 }

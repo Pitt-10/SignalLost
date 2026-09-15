@@ -13,8 +13,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private LayerMask groundLayer;
 
+    [SerializeField] private CapsuleCollider capsuleCollider;
+    [SerializeField] private float standingHeight = 1f;
+    [SerializeField] private float crouchingHeight = 0.5f;
+
     private GameInput gameInput;
     private Rigidbody rb;
+
+    private bool jumpRequested;
 
     private void Awake() {
         rb = GetComponent<Rigidbody>();
@@ -23,8 +29,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update() {
         if (gameInput.GetJumpPressed() && IsGrounded()) {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            jumpRequested = true;
         }
+
+        HandleCrouch();
     }
 
     private void FixedUpdate() {
@@ -35,9 +43,22 @@ public class PlayerMovement : MonoBehaviour
         transform.forward * inputVector.y;
 
         rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
+        
+        if (jumpRequested) { 
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            jumpRequested = false;
+        }
     }
 
     private bool IsGrounded() {
         return Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
+    }
+
+    private void HandleCrouch() {
+        if (gameInput.GetCrouchPressed()) {
+            capsuleCollider.height = crouchingHeight;
+        } else { 
+            capsuleCollider.height = standingHeight;
+        }
     }
 }
