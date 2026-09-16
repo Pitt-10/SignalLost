@@ -14,8 +14,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     [SerializeField] private CapsuleCollider capsuleCollider;
-    [SerializeField] private float standingHeight = 1f;
-    [SerializeField] private float crouchingHeight = 0.5f;
+    [SerializeField] private float crouchingHeight = 1f;
+
+    private float standingHeight;
+    private Vector3 standingCenter;
+    private Vector3 crouchingCenter;
+
+    [SerializeField] private Transform playerCamera;
+    [SerializeField] private float crouchCameraOffset = 0.5f;
+
+    private Vector3 standingCameraPosition;
 
     private GameInput gameInput;
     private Rigidbody rb;
@@ -25,6 +33,14 @@ public class PlayerMovement : MonoBehaviour
     private void Awake() {
         rb = GetComponent<Rigidbody>();
         gameInput = GetComponent<GameInput>();
+
+        standingCenter = capsuleCollider.center;
+        standingHeight = capsuleCollider.height;
+
+        crouchingCenter = standingCenter;
+        crouchingCenter.y = standingCenter.y - (standingHeight - crouchingHeight)/2f;
+
+        standingCameraPosition = playerCamera.localPosition;
     }
 
     private void Update() {
@@ -57,8 +73,14 @@ public class PlayerMovement : MonoBehaviour
     private void HandleCrouch() {
         if (gameInput.GetCrouchPressed()) {
             capsuleCollider.height = crouchingHeight;
-        } else { 
+            capsuleCollider.center = crouchingCenter;
+
+            playerCamera.localPosition = standingCameraPosition + Vector3.down * crouchCameraOffset;
+        } else {
             capsuleCollider.height = standingHeight;
+            capsuleCollider.center = standingCenter;
+
+            playerCamera.localPosition = standingCameraPosition;
         }
     }
 }
