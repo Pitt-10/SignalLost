@@ -1003,6 +1003,8 @@ MonoBehaviour:
     m_Bits: 128
   capsuleCollider: {fileID: 1038582764}
   crouchingHeight: 1
+  playerCamera: {fileID: 1628339808}
+  crouchCameraOffset: 0.5
 --- !u!114 &463275740
 MonoBehaviour:
   m_ObjectHideFlags: 0
