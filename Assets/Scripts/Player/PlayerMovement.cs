@@ -23,6 +23,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform playerCamera;
     [SerializeField] private float crouchCameraOffset = 0.5f;
 
+    [SerializeField] private float crouchSpeed = 8f;
+
+    [SerializeField] private LayerMask obstacleLayer;
+
     private Vector3 standingCameraPosition;
 
     private GameInput gameInput;
@@ -58,8 +62,13 @@ public class PlayerMovement : MonoBehaviour
         transform.right * inputVector.x +
         transform.forward * inputVector.y;
 
-        rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
-        
+        Vector3 velocity = rb.velocity;
+
+        velocity.x = moveDirection.x * moveSpeed;
+        velocity.z = moveDirection.z * moveSpeed;
+
+        rb.velocity = velocity;
+
         if (jumpRequested) { 
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             jumpRequested = false;
@@ -71,16 +80,36 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void HandleCrouch() {
+        Vector3 targetCameraPosition;
+        
         if (gameInput.GetCrouchPressed()) {
             capsuleCollider.height = crouchingHeight;
             capsuleCollider.center = crouchingCenter;
 
-            playerCamera.localPosition = standingCameraPosition + Vector3.down * crouchCameraOffset;
+            targetCameraPosition = standingCameraPosition + Vector3.down * crouchCameraOffset;
         } else {
-            capsuleCollider.height = standingHeight;
-            capsuleCollider.center = standingCenter;
+             if (CanStandUp())
+             {
+                capsuleCollider.height = standingHeight;
+                capsuleCollider.center = standingCenter;
 
-            playerCamera.localPosition = standingCameraPosition;
+                targetCameraPosition = standingCameraPosition;
+             } else {
+                targetCameraPosition =
+                standingCameraPosition + Vector3.down * crouchCameraOffset;
+             }
+
         }
+
+        playerCamera.localPosition = Vector3.Lerp(playerCamera.localPosition, targetCameraPosition, crouchSpeed * Time.deltaTime);
+    }
+
+    private bool CanStandUp() { 
+        float radius = capsuleCollider.radius;
+
+        Vector3 bottom = capsuleCollider.transform.position + Vector3.up * radius;
+        Vector3 top = capsuleCollider.transform.position + Vector3.up * (standingHeight - radius);
+
+        return !Physics.CheckCapsule(bottom, top, radius, obstacleLayer);
     }
 }
