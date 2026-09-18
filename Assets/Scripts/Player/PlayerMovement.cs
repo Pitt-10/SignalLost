@@ -34,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool jumpRequested;
 
+    private bool isCrouching;
+
     private void Awake() {
         rb = GetComponent<Rigidbody>();
         gameInput = GetComponent<GameInput>();
@@ -81,30 +83,30 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleCrouch() {
         Vector3 targetCameraPosition;
-        
+
         if (gameInput.GetCrouchPressed()) {
+            isCrouching = true;
+        } else if (isCrouching && CanStandUp()){ 
+            isCrouching= false;
+        }
+
+        if (isCrouching) {
             capsuleCollider.height = crouchingHeight;
             capsuleCollider.center = crouchingCenter;
 
             targetCameraPosition = standingCameraPosition + Vector3.down * crouchCameraOffset;
         } else {
-             if (CanStandUp())
-             {
-                capsuleCollider.height = standingHeight;
-                capsuleCollider.center = standingCenter;
+            capsuleCollider.height = standingHeight;
+            capsuleCollider.center = standingCenter;
 
-                targetCameraPosition = standingCameraPosition;
-             } else {
-                targetCameraPosition =
-                standingCameraPosition + Vector3.down * crouchCameraOffset;
-             }
-
+            targetCameraPosition = standingCameraPosition;
         }
 
         playerCamera.localPosition = Vector3.Lerp(playerCamera.localPosition, targetCameraPosition, crouchSpeed * Time.deltaTime);
     }
 
-    private bool CanStandUp() { 
+    private bool CanStandUp() {
+
         float radius = capsuleCollider.radius;
 
         Vector3 bottom = capsuleCollider.transform.position + Vector3.up * radius;
