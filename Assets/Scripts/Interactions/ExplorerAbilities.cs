@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class ExplorerAbilities : MonoBehaviour
 {
-    [SerializeField] private float climbCheckDistance = 1.5f;
-    [SerializeField] private LayerMask climbableLayer;
-    private bool CanClimb(){
-        return Physics.Raycast(transform.position, transform.forward, climbCheckDistance, climbableLayer);
+    private PlayerInteraction playerInteraction;
+
+    private void Awake() {
+        playerInteraction = GetComponent<PlayerInteraction>();
+        playerInteraction.OnInteract += PlayerInteraction_OnInteract;
     }
 
-    private void Update() {
-        if (CanClimb()) {
-            Debug.Log("Esta pared se puede trepar");
+    private void PlayerInteraction_OnInteract(object sender, InteractEventArgs e) {
+        if (e.interactable is ClimbableWall climbableWall) { 
+            Climb(climbableWall);
         }
+    }
+
+    private void Climb(ClimbableWall climbableWall) {
+        Debug.Log("El explorador intento trepar");
     }
 }
