@@ -12,12 +12,23 @@ public class ExplorerAbilities : MonoBehaviour
     }
 
     private void PlayerInteraction_OnInteract(object sender, InteractEventArgs e) {
-        if (e.interactable is ClimbableWall climbableWall) { 
-            Climb(climbableWall);
+        if (e.interactable is ClimbInteractable climbInteractable) { 
+            ClimbableWall climbableWall = climbInteractable.GetClimbableWall();
+
+            if (climbInteractable.GetClimbAction() == ClimbAction.Climb) { 
+                Climb(climbableWall);
+            } 
+            else if (climbInteractable.GetClimbAction() == ClimbAction.Drop) {
+                 Drop(climbableWall);
+            }
         }
     }
 
-    private void Climb(ClimbableWall climbableWall) {
-        Debug.Log("El explorador intento trepar");
+    private void Climb(ClimbableWall climbableWall) { 
+        transform.position = climbableWall.GetTopDestination();
+    }
+
+    private void Drop(ClimbableWall climbableWall) {
+        transform.position = climbableWall.GetBottomDestination();
     }
 }

@@ -44,6 +44,10 @@ public class GameInput : MonoBehaviour
     }
 
     public bool GetCrouchPressed() {
-        return inputActions.Player.Crouch.IsPressed();
+        return inputActions.Player.Crouch.WasPressedThisFrame();
+    }
+
+    public bool GetPronePressed() {
+        return inputActions.Player.Crouch.WasPressedThisFrame();
     }
 }

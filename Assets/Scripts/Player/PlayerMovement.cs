@@ -85,11 +85,13 @@ public class PlayerMovement : MonoBehaviour
         Vector3 targetCameraPosition;
 
         if (gameInput.GetCrouchPressed()) {
-            isCrouching = true;
-        } else if (isCrouching && CanStandUp()){ 
-            isCrouching= false;
+            if (isCrouching && CanStandUp()) {
+                isCrouching = false;
+            } 
+            else if (!isCrouching) {
+                isCrouching = true;
+            }
         }
-
         if (isCrouching) {
             capsuleCollider.height = crouchingHeight;
             capsuleCollider.center = crouchingCenter;
@@ -103,6 +105,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         playerCamera.localPosition = Vector3.Lerp(playerCamera.localPosition, targetCameraPosition, crouchSpeed * Time.deltaTime);
+    
     }
 
     private bool CanStandUp() {
