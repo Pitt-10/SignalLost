@@ -24,6 +24,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float crouchCameraOffset = 0.5f;
 
     [SerializeField] private float crouchSpeed = 8f;
+    
+    private bool isCrouching;
+
+    [SerializeField] private float proneHeight = 0.5f;
+    [SerializeField] private float proneCameraOffset = 1f;
+
+    private Vector3 proneCenter;
+    private bool isProne;
 
     [SerializeField] private LayerMask obstacleLayer;
 
@@ -34,7 +42,6 @@ public class PlayerMovement : MonoBehaviour
 
     private bool jumpRequested;
 
-    private bool isCrouching;
 
     private void Awake() {
         rb = GetComponent<Rigidbody>();
@@ -46,6 +53,9 @@ public class PlayerMovement : MonoBehaviour
         crouchingCenter = standingCenter;
         crouchingCenter.y = standingCenter.y - (standingHeight - crouchingHeight)/2f;
 
+        proneCenter = standingCenter;
+        proneCenter.y = standingCenter.y - (standingHeight - proneHeight) / 2f;
+
         standingCameraPosition = playerCamera.localPosition;
     }
 
@@ -54,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
             jumpRequested = true;
         }
 
-        HandleCrouch();
+        HandleStance();
     }
 
     private void FixedUpdate() {
@@ -81,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
         return Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
     }
 
-    private void HandleCrouch() {
+    private void HandleStance() {
         Vector3 targetCameraPosition;
 
         if (gameInput.GetCrouchPressed()) {
@@ -92,7 +102,13 @@ public class PlayerMovement : MonoBehaviour
                 isCrouching = true;
             }
         }
-        if (isCrouching) {
+        if (isProne) {
+            capsuleCollider.height = proneHeight;
+            capsuleCollider.center = proneCenter;
+
+            targetCameraPosition = standingCameraPosition + Vector3.down * proneCameraOffset;
+        } 
+        else if (isCrouching) {
             capsuleCollider.height = crouchingHeight;
             capsuleCollider.center = crouchingCenter;
 
@@ -116,5 +132,17 @@ public class PlayerMovement : MonoBehaviour
         Vector3 top = capsuleCollider.transform.position + Vector3.up * (standingHeight - radius);
 
         return !Physics.CheckCapsule(bottom, top, radius, obstacleLayer);
+    }
+
+    public void EnterProne() { 
+        isProne = true;
+    }
+
+    public void ExitProne() {
+        isProne = false;
+    }
+
+    public bool IsProne() { 
+        return isProne;
     }
 }

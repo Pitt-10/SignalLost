@@ -808,6 +808,18 @@ PrefabInstance:
       value: Explorador
       objectReference: {fileID: 0}
     - target: {fileID: 3449768301848277485, guid: 7a18a68bf940e734f953adcfd623ff3a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449768301848277485, guid: 7a18a68bf940e734f953adcfd623ff3a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449768301848277485, guid: 7a18a68bf940e734f953adcfd623ff3a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449768301848277485, guid: 7a18a68bf940e734f953adcfd623ff3a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
